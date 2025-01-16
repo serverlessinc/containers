@@ -1,0 +1,9 @@
+# org: your-org-name
+services:
+  infra:
+    path: ./infra
+  scf:
+    path: ./scf
+    params:
+      userTable: ${infra.UsersTableName}
+      postsTable: ${infra.PostsTableName}

@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "DynamoDB table for Users"
+
+Resources:
+  UsersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: N
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
+      Tags:
+        - Key: Project
+          Value: UserManagement
+  PostsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        - AttributeName: authorId
+          AttributeType: N
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: AuthorIndex
+          KeySchema:
+            - AttributeName: authorId
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+      BillingMode: PAY_PER_REQUEST
+      Tags:
+        - Key: Project
+          Value: BlogPosts
+
+Outputs:
+  UsersTableName:
+    Description: Name of the DynamoDB table
+    Value: !Ref UsersTable
+  PostsTableName:
+    Value: !Ref PostsTable

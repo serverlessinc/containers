@@ -1,0 +1,12 @@
+namespace: scf
+
+containers:
+  service-express:
+    compute:
+      src: ./service
+      type: awsLambda
+      environment:
+        SERVICE_NAME: service-express
+
+    routing:
+      pathPattern: /express*

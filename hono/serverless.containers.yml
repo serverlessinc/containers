@@ -1,0 +1,11 @@
+namespace: scf
+
+containers:
+  service-hono:
+    compute:
+      src: ./service
+      type: awsLambda
+      environment:
+        SERVICE_NAME: service-hono
+    routing:
+      pathPattern: /hono*
