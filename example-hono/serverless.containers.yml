@@ -1,12 +1,11 @@
 namespace: scf
 
 containers:
-  service-express:
+  service-hono:
     compute:
       src: ./service
       type: awsLambda
       environment:
-        SERVICE_NAME: service-express
-
+        SERVICE_NAME: service-hono
     routing:
-      pathPattern: /express*
+      pathPattern: /*

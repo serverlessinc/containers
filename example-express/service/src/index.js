@@ -7,7 +7,6 @@ config = {
   platform: process.env.SCF_PLATFORM,
   isLocal: process.env.SCF_LOCAL,
   localPort: process.env.SCF_LOCAL_PORT,
-  pathPrefix: "/express", // URL prefix, can be modified here
 };
 
 /**
@@ -16,7 +15,6 @@ config = {
 
 // Serve static files from the "public" directory
 app.use(
-  config.pathPrefix,
   express.static(path.join(__dirname, "public"), { redirect: false })
 );
 
@@ -56,7 +54,7 @@ app.options(`*`, (req, res) => {
 
 // Default
 app.get(
-  `${config.pathPrefix}*`,
+  `/*`,
   asyncHandler((req, res) => {
     console.log("hello world");
     res.send(`
@@ -66,18 +64,12 @@ app.get(
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="${
-          config.pathPrefix
-        }/css/styles.css">
-        <link rel="icon" type="image/png" href="${
-          config.pathPrefix
-        }/images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+        <link rel="icon" type="image/png" href="/images/favicon.png">
       </head>
       <body>
         <div class="container">
-          <img src="${
-            config.pathPrefix
-          }/images/logo.png" alt="Logo" class="logo">
+          <img src="/images/logo.png" alt="Logo" class="logo">
           <div class="info">Compute Type: ${config.platform}</div>
           <div class="info">Local: ${config.isLocal ? true : false}</div>
         </div>
@@ -96,13 +88,13 @@ app.use((req, res) => {
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="${config.pathPrefix}/css/styles.css">
-        <link rel="icon" type="image/png" href="${config.pathPrefix}/images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+        <link rel="icon" type="image/png" href="/images/favicon.png">
       </head>
       <body>
         <div class="container">
           <h1>404 - Page Not Found</h1>
-          <a href="${config.pathPrefix}">Return to Home</a>
+          <a href="/">Return to Home</a>
         </div>
       </body>
     </html>

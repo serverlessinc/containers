@@ -8,7 +8,6 @@ const config = {
   platform: process.env.SCF_PLATFORM,
   isLocal: process.env.SCF_LOCAL,
   localPort: process.env.SCF_LOCAL_PORT,
-  pathPrefix: "/hono", // URL prefix, can be modified here
 };
 
 /**
@@ -27,10 +26,9 @@ app.use("*", async (c, next) => {
 
 // Serve static files from the "public" directory
 app.use(
-  "/hono/*",
+  "/*",
   serveStatic({
     root: "src/public",
-    rewriteRequestPath: (path) => path.replace(/^\/hono/, "/"),
   })
 );
 
@@ -45,7 +43,7 @@ app.get("/robots.txt", (c) => c.text("User-agent: *"));
 app.options("*", (c) => c.status(200).body(""));
 
 // Default Route
-app.get(`${config.pathPrefix}`, (c) =>
+app.get(`/`, (c) =>
   c.html(`
     <html>
       <head>
@@ -53,18 +51,12 @@ app.get(`${config.pathPrefix}`, (c) =>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="${
-          config.pathPrefix
-        }/css/styles.css">
-        <link rel="icon" type="image/png" href="${
-          config.pathPrefix
-        }/images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+        <link rel="icon" type="image/png" href="/images/favicon.png">
       </head>
       <body>
         <div class="container">
-          <img src="${
-            config.pathPrefix
-          }/images/logo.png" alt="Logo" class="logo">
+          <img src="/images/logo.png" alt="Logo" class="logo">
           <div class="info">Compute Type: ${config.platform}</div>
           <div class="info">Local: ${config.isLocal ? true : false}</div>
         </div>
@@ -83,13 +75,13 @@ app.notFound((c) =>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="${config.pathPrefix}/css/styles.css">
-        <link rel="icon" type="image/png" href="${config.pathPrefix}/images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+        <link rel="icon" type="image/png" href="/images/favicon.png">
       </head>
       <body>
         <div class="container">
           <h1>404 - Page Not Found</h1>
-          <a href="${config.pathPrefix}">Return to Home</a>
+          <a href="/">Return to Home</a>
         </div>
       </body>
     </html>
