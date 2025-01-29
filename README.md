@@ -7,7 +7,7 @@ In this initial release, SCF focuses on delivering an API architecture that leve
 # Features
 
 ### Unified Container Development & Deployment
-- Deploy seamlessly to AWS Lambda and ECS Fargate with a single workflow - more cloud providers coming soon
+- Deploy seamlessly to AWS Lambda and ECS Fargate via a single workflow (more providers coming soon)
 - Mix Lambda and Fargate compute within a single API
 - Switch compute platforms instantly without code rewrites or downtime
 - Optimize container builds automatically for each compute service
