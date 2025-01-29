@@ -4,7 +4,7 @@
 
 In this initial release, SCF focuses on delivering an API architecture that leverages AWS Application Load Balancer for request routing, allowing developers to freely mix and transition between AWS Lambda and AWS ECS Fargate compute options.
 
-* [Overview Video](https://youtu.be/KFCSo4N-Bxo)
+* [Overview Video (90 seconds)](https://youtu.be/KFCSo4N-Bxo)
 * [Feedback Form](https://form.typeform.com/to/iqaERaLP)
 
 # Features
