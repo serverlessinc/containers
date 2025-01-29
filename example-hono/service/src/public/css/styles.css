@@ -68,7 +68,7 @@ h1 {
 }
 
 .logo {
-  max-width: 300px; /* Controls logo size for responsiveness */
+  max-width: 400px; /* Controls logo size for responsiveness */
   width: 100%;
   height: auto;
   margin-bottom: 40px;
