@@ -13,12 +13,21 @@ containers:
       pathHealthCheck: /health
     compute:
       type: awsLambda
-      awsIam:
-        customPolicy:
-          Version: "2012-10-17"
-          Statement:
-            - Effect: Allow
-              Action:
-                - transcribe:*
-              Resource:
-                - "*"
+      environment:
+        SERVICE_NAME: service-express
+      # awsIam:
+      #   customPolicy:
+      #     Version: "2012-10-17"
+      #     Statement:
+      #       - Effect: Allow
+      #         Action:
+      #           - dynamodb:GetItem
+      #           - dynamodb:PutItem
+      #           - dynamodb:UpdateItem
+      #           - dynamodb:DeleteItem
+      #           - dynamodb:Query
+      #           - dynamodb:Scan
+      #           - dynamodb:BatchGetItem
+      #           - dynamodb:BatchWriteItem
+      #         Resource:
+      #           - "*"
