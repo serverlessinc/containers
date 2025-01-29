@@ -3,27 +3,14 @@ const path = require("path");
 const app = express();
 const port = 8080;
 
-config = {
-  platform: process.env.SCF_PLATFORM,
-  isLocal: process.env.SCF_LOCAL,
-  localPort: process.env.SCF_LOCAL_PORT,
-};
-
 /**
  * Midddleware
  */
 
 // Serve static files from the "public" directory
-app.use(
-  express.static(path.join(__dirname, "public"), { redirect: false })
-);
+app.use(express.static(path.join(__dirname, "public"), { redirect: false }));
 
 app.use((req, res, next) => {
-  // Always redirect to HTTPS
-  //   if (req.header("x-forwarded-proto") !== "https") {
-  //     return res.redirect(`https://${req.header("host")}${req.url}`);
-  //   }
-
   // Enable CORS
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "*");
@@ -47,16 +34,19 @@ app.get("/robots.txt", (req, res) => {
   res.send(`User-agent: *`);
 });
 
-// Options
 app.options(`*`, (req, res) => {
   res.status(200).send();
+});
+
+// Healthcheck
+app.get(`/health`, (req, res) => {
+  res.status(200).send(`OK`);
 });
 
 // Default
 app.get(
   `/*`,
   asyncHandler((req, res) => {
-    console.log("hello world");
     res.send(`
     <html>
       <head>
@@ -70,8 +60,8 @@ app.get(
       <body>
         <div class="container">
           <img src="/images/logo.png" alt="Logo" class="logo">
-          <div class="info">Compute Type: ${config.platform}</div>
-          <div class="info">Local: ${config.isLocal ? true : false}</div>
+          <div class="info">Compute Type: ${process.env.SERVERLESS_CONTAINERS_COMPUTE_TYPE}</div>
+          <div class="info">Local: ${process.env.SERVERLESS_CONTAINERS_LOCAL || 'false'}</div>
         </div>
       </body>
     </html>
@@ -111,10 +101,10 @@ app.use((err, req, res, next) => {
     message: err.message || "Internal Server Error",
     code: err.code || "internal_error",
     status: err.status,
-    // stack: err.stack, Don't include stack trace
+    // stack: err.stack - Don't include stack trace
   });
 });
 
 app.listen(port, "0.0.0.0", () => {
-  console.log(`\nApp initialized`);
+  console.log(`App initialized`);
 });

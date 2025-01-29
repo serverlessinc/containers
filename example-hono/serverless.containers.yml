@@ -1,11 +1,17 @@
-namespace: scf
+namespace: scf-example-hono
+
+provider:
+  type: aws
+  aws:
+    region: us-east-1
 
 containers:
   service-hono:
-    compute:
-      src: ./service
-      type: awsLambda
-      environment:
-        SERVICE_NAME: service-hono
+    src: ./service
     routing:
       pathPattern: /*
+      pathHealthCheck: /health
+    compute:
+      type: awsFargateEcs
+      environment:
+        SERVICE_NAME: service-hono

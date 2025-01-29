@@ -4,12 +4,6 @@ import { serve } from "@hono/node-server";
 
 const app = new Hono();
 
-const config = {
-  platform: process.env.SCF_PLATFORM,
-  isLocal: process.env.SCF_LOCAL,
-  localPort: process.env.SCF_LOCAL_PORT,
-};
-
 /**
  * Middleware
  */
@@ -42,8 +36,11 @@ app.get("/robots.txt", (c) => c.text("User-agent: *"));
 // Options
 app.options("*", (c) => c.status(200).body(""));
 
+// Healthcheck
+app.get(`/health`, (c) => c.text(`OK`));
+
 // Default Route
-app.get(`/`, (c) =>
+app.get(`/*`, (c) =>
   c.html(`
     <html>
       <head>
@@ -57,8 +54,9 @@ app.get(`/`, (c) =>
       <body>
         <div class="container">
           <img src="/images/logo.png" alt="Logo" class="logo">
-          <div class="info">Compute Type: ${config.platform}</div>
-          <div class="info">Local: ${config.isLocal ? true : false}</div>
+          <div class="info">Compute Type: ${process.env.SERVERLESS_CONTAINERS_COMPUTE_TYPE}</div>
+          <div class="info">Local: ${process.env.SERVERLESS_CONTAINERS_LOCAL || "false"}</div>
+        </div>
         </div>
       </body>
     </html>

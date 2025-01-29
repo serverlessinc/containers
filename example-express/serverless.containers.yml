@@ -1,12 +1,24 @@
-namespace: scf
+namespace: scf-example-express
+
+provider:
+  type: aws
+  aws:
+    region: us-east-1
 
 containers:
   service-express:
-    compute:
-      src: ./service
-      type: awsLambda
-      environment:
-        SERVICE_NAME: service-express
-
+    src: ./service
     routing:
       pathPattern: /*
+      pathHealthCheck: /health
+    compute:
+      type: awsLambda
+      awsIam:
+        customPolicy:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action:
+                - transcribe:*
+              Resource:
+                - "*"
