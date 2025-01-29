@@ -42,7 +42,10 @@ https://form.typeform.com/to/iqaERaLP
 
 
 
+<<<<<<< HEAD
 
 
 * https://youtu.be/KFCSo4N-Bxo
 * https://form.typeform.com/to/iqaERaLP
+=======
+>>>>>>> example-improvements
