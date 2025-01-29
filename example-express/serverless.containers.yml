@@ -11,10 +11,10 @@ containers:
     routing:
       pathPattern: /*
       pathHealthCheck: /health
+    environment:
+      HELLO: world
     compute:
-      type: awsLambda
-      environment:
-        SERVICE_NAME: service-express
+      type: awsLambda # or awsFargateEcs
       # awsIam:
       #   customPolicy:
       #     Version: "2012-10-17"

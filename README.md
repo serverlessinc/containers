@@ -28,8 +28,56 @@ In this initial release, SCF focuses on delivering an API architecture that leve
 - Smart code/config change detection for deployments
 - Supports one or multiple custom domains on the same API
 - Automatic SSL certificate management
-- Secure IAM and network defaults
+- Secure AWS IAM and network defaults
+- Load environment variables from .env, AWS Secrets Manager, AWS Systems Manager Parameter Store, HashiCorp Vault, HashiCorp Terraform state, and more via [Serverless Framework Variables](https://www.serverless.com/framework/docs/guides/variables)
 - Multi-cloud support coming soon
+
+# Example Configuration
+
+The following is a simple example of a `serverless.containers.yml` file, for a classic full-stack application.
+
+```yaml
+namespace: acmeinc
+
+provider:
+  type: aws
+  aws:
+    region: us-east-1
+
+containers:
+  # Web (Frontend)
+  service-web:
+    src: ./web
+    routing:
+      domain: acmeinc.com
+      pathPattern: /*
+    compute:
+      type: awsLambda
+  # API (Backend)
+  service-api:
+    src: ./api
+    routing:
+      domain: api.acmeinc.com
+      pathPattern: /api/*
+      pathHealthCheck: /health
+    compute:
+      type: awsFargateEcs
+      awsFargateEcs:
+        memory: 4096
+        cpu: 1024
+      environment:
+        HELLO: world
+      awsIam:
+        customPolicy:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action:
+                - dynamodb:GetItem
+              Resource:
+                - "*"
+```
+
 
 # Quick Start
 
@@ -63,15 +111,20 @@ export AWS_SESSION_TOKEN=your-session-token
 1. Start with an example project by cloning the repository:
 ```bash
 git clone https://github.com/serverless/containers.git
-cd containers/example-express
 ```
 
-2. Install dependencies:
+2. Navigate to the example project directory, and install any dependencies:
 ```bash
+cd example-express/service
 npm install
 ```
 
 ### Development
+
+Ensure you are within the directory containing the `serverless.containers.yml` file.
+```bash
+cd example-express
+```
 
 Start the local development environment:
 ```bash

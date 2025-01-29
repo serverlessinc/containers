@@ -60,8 +60,21 @@ app.get(
       <body>
         <div class="container">
           <img src="/images/logo.png" alt="Logo" class="logo">
-          <div class="info">Compute Type: ${process.env.SERVERLESS_CONTAINERS_COMPUTE_TYPE}</div>
-          <div class="info">Local: ${process.env.SERVERLESS_CONTAINERS_LOCAL || 'false'}</div>
+          <div class="info">Namespace: ${
+            process.env.SERVERLESS_CONTAINERS_NAMESPACE
+          }</div>
+          <div class="info">Container Name: ${
+            process.env.SERVERLESS_CONTAINERS_CONTAINER_NAME
+          }</div>
+          <div class="info">Stage: ${
+            process.env.SERVERLESS_CONTAINERS_STAGE
+          }</div>
+          <div class="info">Compute Type: ${
+            process.env.SERVERLESS_CONTAINERS_COMPUTE_TYPE
+          }</div>
+          <div class="info">Local: ${
+            process.env.SERVERLESS_CONTAINERS_LOCAL || "false"
+          }</div>
         </div>
       </body>
     </html>
