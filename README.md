@@ -32,9 +32,9 @@ In this initial release, SCF focuses on delivering an API architecture that leve
 - Load environment variables from .env, AWS Secrets Manager, AWS Systems Manager Parameter Store, HashiCorp Vault, HashiCorp Terraform state, and more via [Serverless Framework Variables](https://www.serverless.com/framework/docs/guides/variables)
 - Multi-cloud support coming soon
 
-# Example Configuration
+# Configuration
 
-The following is a simple example of a `serverless.containers.yml` file, for a classic full-stack application.
+Serverless Container Framework offers simple YAML to deliver complex architectures via a `serverless.containers.yml` file. Here is a simple example of a classic full-stack application.
 
 ```yaml
 namespace: acmeinc
