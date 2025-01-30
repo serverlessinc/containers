@@ -2,10 +2,11 @@
 
 **The missing link between serverless and containers** - Serverless Container Framework (SCF) is a unified development and deployment experience for containers on serverless platforms.
 
-In this initial release, SCF focuses on delivering an API architecture that leverages AWS Application Load Balancer for request routing, allowing developers to freely mix and transition between AWS Lambda and AWS ECS Fargate compute options.
+In this initial release, SCF focuses on delivering an API architecture that leverages AWS Application Load Balancer for request routing, allowing developers to freely mix and transition between AWS Lambda and AWS ECS Fargate compute options, accompanied by a rich development experience.
 
 * [Overview Video (90 seconds)](https://youtu.be/KFCSo4N-Bxo)
 * [Feedback Form](https://form.typeform.com/to/iqaERaLP)
+* [Documentation](https://serverless.com/containers/docs)
 
 # Features
 
@@ -34,7 +35,9 @@ In this initial release, SCF focuses on delivering an API architecture that leve
 
 # Configuration
 
-Serverless Container Framework offers simple YAML to deliver complex architectures via a `serverless.containers.yml` file. Here is a simple example of a classic full-stack application.
+Serverless Container Framework offers simple YAML to deliver complex architectures via a `serverless.containers.yml` file. Here is a simple example of a full-stack application.
+
+To see the full list of configuration options, see the [Configuration Docs](https://serverless.com/containers/docs/configuration).
 
 ```yaml
 namespace: acmeinc
@@ -157,6 +160,10 @@ serverless remove --force
 - Ensure Docker daemon is running for local development
 - Check AWS credentials are properly configured using `aws sts get-caller-identity`
 - View detailed logs with `serverless dev --debug` or `serverless deploy --debug`
+
+### Documentation
+
+Check out the [Documentation](https://serverless.com/containers/docs) for information on getting started, development, deployment, and more.
 
 
 
