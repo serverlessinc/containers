@@ -44,10 +44,8 @@ To see the full list of configuration options, see the [Configuration Docs](http
 ```yaml
 namespace: acmeinc
 
-provider:
-  type: aws
-  aws:
-    region: us-east-1
+deployment:
+  type: awsApi@1.0
 
 containers:
   # Web (Frontend)

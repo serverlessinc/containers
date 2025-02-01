@@ -1,9 +1,7 @@
-namespace: scf-example-hono
+name: scf-example-hono
 
-provider:
-  type: aws
-  aws:
-    region: us-east-1
+deployment:
+  type: awsApi@1.0
 
 containers:
   service-hono:
