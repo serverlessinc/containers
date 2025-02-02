@@ -1,0 +1,25 @@
+{
+  "name": "example-react",
+  "version": "1.0.0",
+  "description": "A simple React app deployed to containers using esbuild.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "build": "NODE_ENV=production node esbuild.config.js",
+    "start": "NODE_ENV=production node server.js",
+    "dev": "node dev.js"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.3",
+    "esbuild": "^0.17.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

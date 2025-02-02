@@ -1,10 +1,10 @@
-name: scf-example-hono
+name: hono
 
 deployment:
   type: awsApi@1.0
 
 containers:
-  service-hono:
+  service:
     src: ./service
     routing:
       pathPattern: /*
@@ -19,13 +19,6 @@ containers:
       #     Statement:
       #       - Effect: Allow
       #         Action:
-      #           - dynamodb:GetItem
-      #           - dynamodb:PutItem
-      #           - dynamodb:UpdateItem
-      #           - dynamodb:DeleteItem
-      #           - dynamodb:Query
-      #           - dynamodb:Scan
-      #           - dynamodb:BatchGetItem
-      #           - dynamodb:BatchWriteItem
+      #           - dynamodb:*
       #         Resource:
       #           - "*"

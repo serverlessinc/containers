@@ -6,6 +6,5 @@
 **/.serverless
 **/dist/
 **/build/
-**/images/
 **/releases/
 **/release-builds/

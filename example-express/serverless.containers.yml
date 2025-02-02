@@ -1,10 +1,10 @@
-name: scf-example-express
+name: express
 
 deployment:
   type: awsApi@1.0
 
 containers:
-  service-express:
+  service:
     src: ./service
     routing:
       pathPattern: /*
