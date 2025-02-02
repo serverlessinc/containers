@@ -1,4 +1,4 @@
-name: react
+name: nextjs
 
 deployment:
   type: awsApi@1.0
@@ -12,7 +12,7 @@ containers:
     environment:
       HELLO: world
     compute:
-      # awsLambda is not recommended for this react app. 
-      # Your bundled react app will grow to be larger than 
+      # awsLambda is not recommended for this nextjs app. 
+      # SSR can generate large HTML responses, which may exceed 
       # the req/res size limit for AWS ALB and AWS Lambda.
       type: awsFargateEcs
