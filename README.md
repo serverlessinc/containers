@@ -6,7 +6,7 @@ In this initial release, SCF focuses on delivering an API architecture that leve
 
 This repo contains examples and other educational content on SCF. The code for SCF ships within the [Serverless Framework](https://github.com/serverless/serverless).
 
-* [Overview Video (90 seconds)](https://youtu.be/KFCSo4N-Bxo)
+* [Overview Video (90 seconds)](https://youtu.be/KXNYemGzda4)
 * [Feedback Form](https://form.typeform.com/to/iqaERaLP)
 * [Documentation](https://serverless.com/containers/docs)
 
