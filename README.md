@@ -1,6 +1,6 @@
 [![Serverless Container Framework](https://github.com/user-attachments/assets/38751c4c-3632-4be2-b15f-d92ace24bd9e)](https://serverless.com/containers/docs)
 
-**One solution, deploy anywhere** - Serverless Container Framework (SCF) is a unified development and deployment experience for containers on serverless platforms.
+**One solution to deplyo serverless workloads everywhere** - Serverless Container Framework (SCF) is a unified development and deployment experience for containers on serverless platforms.
 
 In this initial release, SCF focuses on delivering an API architecture that leverages AWS Application Load Balancer for request routing, allowing developers to freely mix and transition between AWS Lambda and AWS ECS Fargate compute options, accompanied by a rich development experience.
 
