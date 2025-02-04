@@ -1,4 +1,4 @@
-![scf-readme-3](https://github.com/user-attachments/assets/38751c4c-3632-4be2-b15f-d92ace24bd9e)
+[![Serverless Container Framework](https://github.com/user-attachments/assets/38751c4c-3632-4be2-b15f-d92ace24bd9e)](https://serverless.com/containers/docs)
 
 **One solution, deploy anywhere** - Serverless Container Framework (SCF) is a unified development and deployment experience for containers on serverless platforms.
 
