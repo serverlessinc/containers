@@ -1,0 +1,16 @@
+name: ai-streaming
+
+deployment:
+  type: awsApi@1.0
+
+containers:
+  service:
+    src: ./service
+    routing:
+      pathPattern: /*
+      pathHealthCheck: /health
+    environment:
+      OPENAI_API_KEY: ${env:OPENAI_API_KEY}
+      ANTHROPIC_API_KEY: ${env:ANTHROPIC_API_KEY}
+    compute:
+      type: awsLambda # or awsFargateEcs

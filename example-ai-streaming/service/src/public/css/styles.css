@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto Mono", monospace;
+  /* Set a static background image */
+  background: url('/images/background.png') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/**
+ * Container for centering content. No animation is applied here,
+ * so that the logo and chat container animate independently.
+ */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50px);
+  min-height: 100vh;
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/**
+ * Logo element styles. The logo starts slightly scaled down (0.9) and hidden (opacity 0),
+ * then fades in with a slight zoom effect over 0.25s, starting after a 0.75s delay.
+ * The ease-out timing function makes the zoom effect decelerate smoothly.
+ */
+.logo {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: logoFadeZoom 0.25s ease-out forwards;
+  animation-delay: 0.75s;
+}
+
+/**
+ * Chat container fades in over 0.25s, with a delay of 0.5s.
+ */
+.chat-container {
+  background: #1c1c1c;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  width: 100%;
+  color: #ffffff;
+  opacity: 0;
+  animation: fadeIn 0.25s ease-in forwards;
+  animation-delay: 0.5s;
+}
+
+.chat-output {
+  height: 400px;
+  padding: 1rem;
+  overflow-y: auto;
+  border-bottom: 1px solid #333333;
+}
+
+.loading {
+  opacity: 0.3;
+}
+
+.input-container {
+  padding: 1rem;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #333333;
+  border-radius: 4px;
+  background: #1f1f1f;
+  color: #ffffff;
+  resize: vertical;
+}
+
+/**
+ * Removes the default outline on focus for the textarea.
+ */
+textarea:focus {
+  outline: none;
+  border-color: #555555;
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 15px;
+}
+
+.message .sender-label {
+  font-weight: bold;
+  margin-right: 8px;
+  min-width: 100px;
+  width: 100px;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.message .message-text {
+  flex: 1;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.button-group {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select {
+  padding: 0.5rem;
+  border: 1px solid #333333;
+  border-radius: 4px;
+  background: #1f1f1f;
+  color: #ffffff;
+}
+
+/**
+ * Removes the default outline on focus for the dropdown.
+ */
+select:focus {
+  outline: none;
+  border-color: #555555;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background: #fd5750;
+  color: white;
+  border: 1px solid #333333;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/**
+ * Removes the default outline on focus/active state for the button.
+ */
+button:focus,
+button:active {
+  outline: none;
+  border-color: #555555;
+}
+
+/**
+ * Keyframes for a simple fade-in effect.
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/**
+ * Keyframes for the logo's fade and zoom in effect.
+ */
+@keyframes logoFadeZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+  .chat-output {
+    height: 300px;
+  }
+  
+  .logo {
+    max-width: 150px;
+    margin-bottom: 30px;
+  }
+  
+  textarea, button, select {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+} 
+} 

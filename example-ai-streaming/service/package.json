@@ -1,0 +1,21 @@
+{
+  "name": "example-express-ai-streaming",
+  "version": "1.0.0",
+  "description": "Example of AI streaming with Express and SSE",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "openai": "^4.82.0",
+    "@anthropic-ai/sdk": "^0.36.0",
+    "dotenv": "^16.4.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
+  }
+} 
