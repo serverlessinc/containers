@@ -166,11 +166,6 @@ serverless remove --force
 Check out the [Documentation](https://serverless.com/containers/docs) for information on getting started, development, deployment, and more.
 
 
-## Licensing
-
-- The code in the `examples` folder is released under the [MIT License](./examples/LICENSE).
-
-
 
 
 
