@@ -165,7 +165,59 @@ serverless remove --force
 
 Check out the [Documentation](https://serverless.com/containers/docs) for information on getting started, development, deployment, and more.
 
+## Serverless Container Framework FAQ
+### How does SCF differ from Serverless Framework?
+Here's the concise FAQ in markdown format:
 
+## Serverless Container Framework FAQ
+
+### How does SCF differ from Serverless Framework?
+
+Serverless Framework specializes in AWS Lambda deployments, while Serverless Container Framework (SCF) focuses on container-based deployments. Key SCF advantages:
+
+- Multi-cloud deployment without provider-specific expertise
+- Unified development and deployment workflow
+- Container portability without code changes
+- Integration with existing container tools
+
+### Why was SCF created?
+
+SCF addresses specific needs:
+- Migration path for high-volume AWS Lambda functions
+- Better enterprise integration through container standards
+- Leveraging improved container support in AWS Lambda
+- Bridging the gap between serverless and traditional container workflows
+
+### What are the pricing details?
+
+- Free for developers and organizations with <$2M annual revenue
+- For larger organizations: 1 credit per deployed container/month
+- Containers deployed <10 days/month incur no charges
+- No charges for:
+  - Individual users
+  - Usage (requests/compute)
+  - CLI actions
+- Check out our [pricing page](https://www.serverless.com/pricing) for more details.
+
+### How does SCF compare to other container tools?
+
+While tools like Terraform and Pulumi offer container deployment capabilities, SCF provides a more comprehensive developer experience:
+- Local cloud environment emulation
+- ALB-compatible local API
+- Real-time log streaming
+- Hot module reloading
+- Zero-downtime switching between Lambda and ECS Fargate
+
+### What are the limitations?
+
+**Compared to AWS Lambda:**
+- Longer deployment times due to:
+  - Larger container images
+  - Additional AWS Fargate infrastructure setup
+- 1MB payload limit for requests/responses (including headers) when using ALB
+
+**Compared to other container tools:**
+- Newer platform still evolving, though offering superior developer experience
 
 
 
