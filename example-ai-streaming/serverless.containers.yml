@@ -13,4 +13,4 @@ containers:
       OPENAI_API_KEY: ${env:OPENAI_API_KEY}
       ANTHROPIC_API_KEY: ${env:ANTHROPIC_API_KEY}
     compute:
-      type: awsLambda # or awsFargateEcs
+      type: awsLambda  # or awsFargateEcs
