@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-// Routes
+// API Routes - these should be handled first
 setupAIRoutes(app);
 
 /**
@@ -28,12 +28,20 @@ setupAIRoutes(app);
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  */
-function healthCheckHandler(req, res) {
+app.get("/health", (req, res) => {
   res.status(200).json({ status: "healthy" });
-}
+});
 
-// Health check endpoint
-app.get("/health", healthCheckHandler);
+/**
+ * Serve index.html for all remaining routes
+ * This enables client-side routing to work properly
+ * 
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 // Error handling
 app.use(errorHandler);
