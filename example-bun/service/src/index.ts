@@ -1,4 +1,6 @@
-const server = Bun.serve({
+const server = {
+  port: 8080,
+  fetch: async (req: Request) => {
   port: 8080,
   fetch(req) {
     const url = new URL(req.url);
@@ -31,5 +33,7 @@ const server = Bun.serve({
     return new Response('Not Found', { status: 404 });
   }
 });
+
+} as const;
 
 console.log(`Server running at http://localhost:${server.port}`);
