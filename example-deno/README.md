@@ -14,7 +14,7 @@ This example demonstrates how to develop and deploy a simple and performant web 
 
 ## Prerequisites
 
-**Docker:** Install and start Docker Desktop as it is required. Get it from [here](https://www.docker.com).
+**Docker:** Install and start Docker Desktop as it is required. Get it [here](https://www.docker.com).
 
 **Serverless Framework:** Serverless Container Framework is a feature of the Serverless Framework.
 
