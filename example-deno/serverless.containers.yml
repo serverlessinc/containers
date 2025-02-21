@@ -13,3 +13,6 @@ containers:
       HELLO: world
     compute:
       type: awsLambda # Can be switched to awsFargateEcs
+    build:
+      options:
+        - --target=awsLambda # Ensure you match the compute type set above
