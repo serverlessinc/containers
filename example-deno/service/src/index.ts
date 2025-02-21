@@ -87,8 +87,21 @@ app.use((ctx) => {
   `;
 });
 
+// Mount router before static files
 app.use(router.routes());
 app.use(router.allowedMethods());
+
+// Static files after router
+app.use(async (ctx, next) => {
+  try {
+    await ctx.send({
+      root: `${Deno.cwd()}/src/public`,
+      index: "index.html",
+    });
+  } catch {
+    await next();
+  }
+});
 
 const port = 8080;
 console.log(`Server running at http://localhost:${port}`);
