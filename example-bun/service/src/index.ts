@@ -1,3 +1,21 @@
+/// <reference lib="dom" />
+
+declare global {
+  const Bun: {
+    serve(options: {
+      port: number;
+      fetch(req: Request): Response | Promise<Response>;
+    }): { port: number };
+    env: {
+      SERVERLESS_NAMESPACE: string;
+      SERVERLESS_CONTAINER_NAME: string;
+      SERVERLESS_STAGE: string;
+      SERVERLESS_COMPUTE_TYPE: string;
+      SERVERLESS_LOCAL: string;
+    };
+  };
+}
+
 const server = Bun.serve({
   port: 8080,
   fetch(req) {
