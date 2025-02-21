@@ -1,0 +1,42 @@
+---
+const env = {
+  namespace: import.meta.env.SERVERLESS_NAMESPACE,
+  containerName: import.meta.env.SERVERLESS_CONTAINER_NAME,
+  stage: import.meta.env.SERVERLESS_STAGE,
+  computeType: import.meta.env.SERVERLESS_COMPUTE_TYPE,
+  local: import.meta.env.SERVERLESS_LOCAL
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Serverless Container Framework</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="info">Namespace: {env.namespace}</div>
+      <div class="info">Container Name: {env.containerName}</div>
+      <div class="info">Stage: {env.stage}</div>
+      <div class="info">Compute Type: {env.computeType}</div>
+      <div class="info">Local: {env.local}</div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: system-ui, sans-serif;
+  }
+  .info {
+    margin: 10px 0;
+    padding: 10px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+</style>
