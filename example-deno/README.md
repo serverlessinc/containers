@@ -1,6 +1,6 @@
 # Deno V2 Example for Serverless Container Framework
 
-Serverless Container Framework (SCF) is a tool that eases development and deployment of containerized applications to AWS Lambda and/or AWS Fargate ECS.
+[Serverless Container Framework (SCF)](https://serverless.com/containers/docs) is a tool that eases development and deployment of containerized applications to AWS Lambda and/or AWS Fargate ECS.
 
 This example demonstrates how to develop and deploy a simple and performant web application using Deno V2 and the Oak framework using the Serverless Container Framework.
 
@@ -8,6 +8,7 @@ This example demonstrates how to develop and deploy a simple and performant web 
 
 - **Deno V2 Support:** Utilizes the official Deno V2 image to run your Deno application.
 - **Oak Framework:** Utilizes the [Oak framework](https://deno.land/x/oak), a middleware framework for handling HTTP requests.
+- **TypeScript:** Utilizes TypeScript for the application codebase.
 - **Compute Flexibility:** Configure the container's compute type to either run as an AWS Lambda function (`awsLambda`) or on AWS Fargate ECS (`awsFargateEcs`) via SCF and a multi-stage Dockerfile is already provided.
 - **Local Development:** SCF supports a rich development mode that supports local emulation of AWS ALB routing and AWS Lambda and AWS Fargate ECS. Develop and test your Deno application locally with near-production parity.
 
@@ -15,7 +16,7 @@ This example demonstrates how to develop and deploy a simple and performant web 
 
 **Docker:** Install and start Docker Desktop as it is required. Get it from [here](https://www.docker.com).
 
-**Install Serverless Framework:** Serverless Container Framework is a feature of the Serverless Framework.
+**Serverless Framework:** Serverless Container Framework is a feature of the Serverless Framework.
 
 ```
 npm i -g serverless
@@ -57,12 +58,15 @@ This file specifies:
   - An environment variable (`HELLO`) is provided.
   - The default compute type is set to `awsLambda` but can be switched to `awsFargateEcs` as needed.
 
+Learn more about Configuration in the [Serverless Container Framework Documentation](https://serverless.com/containers/docs/configuration).
+
 ```
 example-deno/
 ├── serverless.containers.yml      # SCF project configuration file
 └── service/
     ├── Dockerfile                 # Multi-stage Dockerfile for AWS Lambda and Fargate builds
     ├── deno.json                  # Deno configuration and task definitions
+    ├── deno.lock                  # Deno lock file
     └── src/
         ├── index.ts               # Main application entrypoint (uses Oak and oakCors)
         └── public/
@@ -81,6 +85,8 @@ serverless dev
 ```
 
 This will auto watch for changes and rebuild the container when those happen.
+
+Learn more about Development in the [Serverless Container Framework Documentation](https://serverless.com/containers/docs/development).
 
 ## Deployment
 
@@ -111,6 +117,8 @@ To remove all AWS resources including shared infrastructure, use:
 ```bash
 serverless remove --force --all
 ```
+
+Learn more about Deployment in the [Serverless Container Framework Documentation](https://serverless.com/containers/docs/deployment).
 
 ## Additional Resources
 
