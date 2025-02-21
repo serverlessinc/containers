@@ -1,0 +1,15 @@
+name: bun
+
+deployment:
+  type: awsApi@1.0
+
+containers:
+  service:
+    src: ./service
+    routing:
+      pathPattern: /*
+      pathHealthCheck: /health
+    environment:
+      HELLO: world
+    compute:
+      type: awsLambda # Can be switched to awsFargateEcs
