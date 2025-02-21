@@ -25,27 +25,18 @@ const server = Bun.serve({
     const url = new URL(req.url);
     
     if (url.pathname === '/health') {
-      return new Response('OK');
+      return new Response('OK', {
+        headers: { 'Content-Type': 'text/plain' }
+      });
     }
     
     if (url.pathname === '/') {
-      return new Response(`
-        <html>
-          <head>
-            <title>Serverless Container Framework</title>
-          </head>
-          <body>
-            <div>
-              <div>Namespace: ${Bun.env.SERVERLESS_NAMESPACE}</div>
-              <div>Container Name: ${Bun.env.SERVERLESS_CONTAINER_NAME}</div>
-              <div>Stage: ${Bun.env.SERVERLESS_STAGE}</div>
-              <div>Compute Type: ${Bun.env.SERVERLESS_COMPUTE_TYPE}</div>
-              <div>Local: ${Bun.env.SERVERLESS_LOCAL}</div>
-            </div>
-          </body>
-        </html>
-      `, {
-        headers: { 'Content-Type': 'text/html' }
+      return Response.json({
+        namespace: Bun.env.SERVERLESS_NAMESPACE,
+        container_name: Bun.env.SERVERLESS_CONTAINER_NAME,
+        stage: Bun.env.SERVERLESS_STAGE,
+        compute_type: Bun.env.SERVERLESS_COMPUTE_TYPE,
+        local: Bun.env.SERVERLESS_LOCAL
       });
     }
     
