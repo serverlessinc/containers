@@ -4,9 +4,5 @@
   "type": "module",
   "scripts": {
     "start": "bun run src/index.ts"
-  },
-  "dependencies": {
-    "@elysiajs/cors": "^0.8.0",
-    "elysia": "^0.8.17"
   }
 }
