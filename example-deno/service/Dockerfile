@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install -y curl && \
     curl -Lo /usr/local/bin/aws-lambda-web-adapter https://github.com/awslabs/aws-lambda-web-adapter/releases/latest/download/aws-lambda-web-adapter && \
     chmod +x /usr/local/bin/aws-lambda-web-adapter
 EXPOSE 8080
-CMD ["aws-lambda-web-adapter", "--port", "8080", "--", "deno", "task", "start"]
+CMD ["aws-lambda-web-adapter", "--port", "8080", "--", "deno", "run", "--allow-net", "--allow-env", "--allow-read", "src/index.ts"]
 
 # Fargate-specific configuration
 FROM base AS fargate
 EXPOSE 8080
-CMD ["deno", "task", "start"]
+CMD ["deno", "run", "--allow-net", "--allow-env", "--allow-read", "src/index.ts"]

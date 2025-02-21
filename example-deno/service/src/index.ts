@@ -24,16 +24,9 @@ router.get("/robots.txt", (ctx) => {
   ctx.response.body = "User-agent: *";
 });
 
-// Static files
-app.use(async (ctx, next) => {
-  try {
-    await ctx.send({
-      root: `${Deno.cwd()}/src/public`,
-      index: "index.html",
-    });
-  } catch {
-    await next();
-  }
+// Health check
+router.get("/health", (ctx) => {
+  ctx.response.body = "OK";
 });
 
 // Main route
@@ -87,11 +80,11 @@ app.use((ctx) => {
   `;
 });
 
-// Mount router before static files
+// Mount router
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-// Static files after router
+// Static files
 app.use(async (ctx, next) => {
   try {
     await ctx.send({
@@ -103,6 +96,7 @@ app.use(async (ctx, next) => {
   }
 });
 
+// Start server
 const port = 8080;
 console.log(`Server running at http://localhost:${port}`);
 await app.listen({ port });
