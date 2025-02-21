@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "chokidar": "^3.5.3",
-    "esbuild": "^0.17.0"
+    "esbuild": "^0.25.0"
   },
   "keywords": [],
   "author": "",
