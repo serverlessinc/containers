@@ -1,6 +1,4 @@
-const server = {
-  port: 8080,
-  fetch: async (req: Request) => {
+const server = Bun.serve({
   port: 8080,
   fetch(req) {
     const url = new URL(req.url);
@@ -17,11 +15,11 @@ const server = {
           </head>
           <body>
             <div>
-              <div>Namespace: ${process.env.SERVERLESS_NAMESPACE}</div>
-              <div>Container Name: ${process.env.SERVERLESS_CONTAINER_NAME}</div>
-              <div>Stage: ${process.env.SERVERLESS_STAGE}</div>
-              <div>Compute Type: ${process.env.SERVERLESS_COMPUTE_TYPE}</div>
-              <div>Local: ${process.env.SERVERLESS_LOCAL}</div>
+              <div>Namespace: ${Bun.env.SERVERLESS_NAMESPACE}</div>
+              <div>Container Name: ${Bun.env.SERVERLESS_CONTAINER_NAME}</div>
+              <div>Stage: ${Bun.env.SERVERLESS_STAGE}</div>
+              <div>Compute Type: ${Bun.env.SERVERLESS_COMPUTE_TYPE}</div>
+              <div>Local: ${Bun.env.SERVERLESS_LOCAL}</div>
             </div>
           </body>
         </html>
@@ -33,7 +31,5 @@ const server = {
     return new Response('Not Found', { status: 404 });
   }
 });
-
-} as const;
 
 console.log(`Server running at http://localhost:${server.port}`);
