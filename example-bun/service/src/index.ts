@@ -1,5 +1,8 @@
 /// <reference lib="dom" />
 
+// Make this a module
+export {};
+
 declare global {
   const Bun: {
     serve(options: {
