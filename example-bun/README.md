@@ -3,11 +3,11 @@
 This example demonstrates using Bun with the Serverless Container Framework (SCF). It provides a simple web server and API that can be deployed to either AWS Lambda or AWS ECS Fargate.
 
 ## Features
-- Built with Bun and Elysia.js
+- Built with Bun's native HTTP server
 - Supports both AWS Lambda and ECS Fargate deployment
 - Includes health checks and basic routing
-- Static file serving
-- CORS support
+- TypeScript support
+- Minimal dependencies
 
 ## Getting Started
 
@@ -59,6 +59,6 @@ serverless deploy
 
 ## Architecture
 
-The example uses Elysia.js, a modern Bun web framework, to create a simple web server. When deploying to AWS Lambda, it utilizes the AWS Lambda Web Adapter to handle HTTP requests. For Fargate deployments, it runs as a standard container application.
+The example uses Bun's native HTTP server functionality to create a simple web server. When deploying to AWS Lambda, it utilizes the AWS Lambda Web Adapter to handle HTTP requests. For Fargate deployments, it runs as a standard container application.
 
 The Dockerfile includes multi-stage builds to support both Lambda and Fargate deployments efficiently.
