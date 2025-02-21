@@ -1,20 +1,20 @@
 # Deno V2 Example for Serverless Container Framework
 
-[Serverless Container Framework (SCF)](https://serverless.com/containers/docs) is a tool that eases development and deployment of containerized applications to AWS Lambda and/or AWS Fargate ECS.
+[Serverless Container Framework (SCF)](https://serverless.com/containers/docs) is a tool that simplifies the development and deployment of containerized applications to AWS Lambda and/or AWS Fargate ECS.
 
-This example demonstrates how to develop and deploy a simple and performant web application using Deno V2 and the Oak framework using the Serverless Container Framework.
+This example demonstrates the development and deployment of a simple, performant web application built with Deno V2, the Oak framework, and the Serverless Container Framework.
 
 ## Features
 
 - **Deno V2 Support:** Utilizes the official Deno V2 image to run your Deno application.
 - **Oak Framework:** Utilizes the [Oak framework](https://deno.land/x/oak), a middleware framework for handling HTTP requests.
-- **TypeScript:** Utilizes TypeScript for the application codebase.
-- **Compute Flexibility:** Configure the container's compute type to either run as an AWS Lambda function (`awsLambda`) or on AWS Fargate ECS (`awsFargateEcs`) via SCF and a multi-stage Dockerfile is already provided.
-- **Local Development:** SCF supports a rich development mode that supports local emulation of AWS ALB routing and AWS Lambda and AWS Fargate ECS. Develop and test your Deno application locally with near-production parity.
+- **TypeScript:** Uses TypeScript for the application codebase.
+- **Compute Flexibility:** Configure the container's compute type to run either as an AWS Lambda function (`awsLambda`) or on AWS Fargate ECS (`awsFargateEcs`). A multi-stage Dockerfile is provided to support these configurations.
+- **Local Development:** SCF includes a rich development mode that emulates AWS ALB routing, AWS Lambda, and AWS Fargate ECS locally, allowing you to develop and test your Deno application with near-production parity.
 
 ## Prerequisites
 
-**Docker:** Install and start Docker Desktop as it is required. Get it [here](https://www.docker.com).
+**Docker:** Install and start Docker Desktop, as it is required. Get it [here](https://www.docker.com).
 
 **Serverless Framework:** Serverless Container Framework is a feature of the Serverless Framework.
 
@@ -22,11 +22,11 @@ This example demonstrates how to develop and deploy a simple and performant web 
 npm i -g serverless
 ```
 
-**AWS Credentials:** Properly configure your AWS credentials (via environment variables or AWS profiles) to allow SCF to provision and update AWS resources. These are required to use Serverless Container Framework.
+**AWS Credentials:** Properly configure your AWS credentials (via environment variables or AWS profiles) to allow SCF to provision and update AWS resources. These are required to use the Serverless Container Framework.
 
 ## Configuration
 
-The root of the example contains a `serverless.containers.yml` file which defines the project configuration:
+At the root of the example, a `serverless.containers.yml` file defines the project configuration:
 
 ```yaml
 name: deno
@@ -50,10 +50,10 @@ containers:
 ```
 
 This file specifies:
-- **Namespace:** The project name is `deno`. This is used to namespace resources in your AWS account, as a prefix.
-- **Deployment Type:** Using the AWS API deployment type to configure networking (ALB, VPC, etc.).
-- **Container Details:**  
-  - Source code is in the `./service` directory.
+- **Namespace:** The project name is `deno`, which is used as a prefix to namespace resources in your AWS account.
+- **Deployment Type:** Uses the AWS API deployment type to configure networking (ALB, VPC, etc.).
+- **Container Details:**
+  - The source code is in the `./service` directory.
   - Routing rules specify a catch-all route (`/*`) with a defined health check endpoint (`/health`).
   - An environment variable (`HELLO`) is provided.
   - The default compute type is set to `awsLambda` but can be switched to `awsFargateEcs` as needed.
@@ -76,15 +76,15 @@ example-deno/
 
 ## Development
 
-Serverless Container Framework has a dev mode feature that will enable local emulation of the AWS Application Load Balancer at `http://localhost:3000`, enabling you to test routing, static asset delivery, and health check endpoints locally. It will also start your container with Deno and proxy requests to it on port `8080`.
-  
+SCF includes a rich development mode that emulates AWS ALB routing, AWS Lambda, and AWS Fargate ECS locally. This mode allows you to test routing, static asset delivery, and health check endpoints while running your container with Deno, which proxies requests on port `8080`.
+
 Run the following command to start local development mode:
 
 ```bash
 serverless dev
 ```
 
-This will auto watch for changes and rebuild the container when those happen.
+This command watches for changes and rebuilds the container as needed.
 
 Learn more about Development in the [Serverless Container Framework Documentation](https://serverless.com/containers/docs/development).
 
@@ -98,9 +98,9 @@ Execute the following command to deploy your container to AWS:
 serverless deploy
 ```
 
-This command builds the Deno container image using the provided Dockerfile and provisions AWS resources (ALB, VPC, Lambda function or ECS Fargate service).
+This command builds the Deno container image using the provided Dockerfile and provisions AWS resources (ALB, VPC, Lambda function, or ECS Fargate service).
 
-If you switch compute types, ensure that you set the `build` `--target` option to points to the same compute type, given there are multiple compute type build configurations declared in your Dockerfile.
+If you switch compute types, ensure that you set the build `--target` option to the corresponding compute type, since the Dockerfile declares multiple build configurations.
 
 Once deployed, SCF will output the URLs and endpoints (such as the ALB endpoint) for your application.
 
@@ -112,7 +112,7 @@ To remove the deployed containers, run:
 serverless remove
 ```
 
-To remove all AWS resources including shared infrastructure, use:
+To remove all AWS resources, including shared infrastructure, use:
 
 ```bash
 serverless remove --force --all
